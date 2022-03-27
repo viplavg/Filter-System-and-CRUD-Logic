@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .filter {
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 0 16px lightgray;
+    display: flex;
+  }
+  
+  .name_filter,
+  .category_filter,
+  .price_filter,
+  .seller_filter,
+  .company_filter {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+  }
+  select {
+    cursor: pointer;
+  }
+  .inp {
+    width: 90%;
+    outline: none;
+    height: 34px;
+    border: 1px solid #dddddd;
+    text-indent: 10px;
+    font-family: segoe ui;
+    border-radius: 4px;
+  }
+  .btn {
+    padding: 6px 40px;
+    cursor: pointer;
+    border: 1px solid #dddddd;
+    color: black;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-family: segoe ui;
+    transition: 0.4s;
+  }
+  .btn:hover {
+    background-color: rgb(209, 183, 183);
+  }
+  .btn:active {
+    background-color: #dddddd;
+  }
+  .data_display {
+    width: 100%;
+    padding: 30px 200px;
+  }
+  
+  .data_display {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    align-items: flex-end;
+  }
+  .data_display > button {
+    padding: 6px 22px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-family: segoe ui;
+  }
+  
+  th {
+    padding: 8px 8px;
+    background-color: yellowgreen;
+    color: white;
+    border: 1px solid white;
+    font-size: 17px;
+    font-weight: 500;
+    /* display: flex; */
+  }
+  td {
+    padding: 8px 0px;
+    border: 1px solid white;
+    text-transform: capitalize;
+    font-size: 15px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  
+  tr > td:last-child i {
+    cursor: pointer;
+    color: rgb(39, 5, 5);
+    font-size: 15px;
+    transition: 0.4s ease-in-out;
+  }
+  
+  tr > td:last-child i:hover {
+    transform: scale(1.15);
+  }
+  
+  tr > td:last-child > i:nth-child(2) {
+    margin: 0px 12px;
+  }
+  
+  /* css for modal */
+  
+  .modal {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  .modal_data {
+    width: 30%;
+    background-color: white;
+    padding: 20px;
+    font-family: segoe ui;
+    color: rgb(90, 12, 12);
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    position: relative;
+  }
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+  .inputs input {
+    width: 90%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    text-indent: 5px;
+    color: rgb(44, 39, 39);
+  }
+  .inputs input::placeholder {
+    font-family: segoe ui;
+    letter-spacing: 0.04em;
+    color: rgb(182, 145, 145);
+  }
+  .inputs input:focus {
+    border-bottom: 0.13em solid blue;
+  }
+  .modal_btn {
+    width: 90%;
+  }
+  .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.35s;
+  }
+  .close:hover {
+    color: rgb(39, 5, 5);
+  }
+  
+  .prod_img {
+    width: 30px;
+    height: 40px;
+  }
+  
+  .view_modal {
+    width: 40%;
+    padding: 0;
+  }
+  
+  .product_content {
+    display: flex;
+  }
+  
+  .display_product_large {
+    width: 50%;
+  }
+  
+  .display_product_large > img {
+    width: 100%;
+    height: 100%;
+  }
+  .content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+  }
+  .head > h1 {
+    font-size: 40px;
+    color: rgb(44, 39, 39);
+    font-family: segoe ui;
+  }
+  
+  .head > p {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .head > p > span {
+    color: red;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  
+  .price {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    font-size: 50px;
+  }
+
+  .spec{
+      width: 80%;
+  }
+  .spec > p{
+      font-size: 14px;
+      font-family: segoe ui;
+      line-height: 1.6;
+      text-align: justify;
+  }
+
+  .shop_buttons {
+      display: flex;
+      column-gap: 14px;
+      margin-bottom: 14px;
+  }
+  .shop_buttons button {
+      padding: 8px 17px;
+  }
+
+  .warning_buttons {
+    display: flex;
+    column-gap: 15px;
+  }
+
+  .pagination {
+    width: 100%;
+    height: 50px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pagination_controls {
+    width: 50%;
+    height: 50px;
+    /* background-color: grey; */
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    padding-left: 10px;
+  }
+
+  .pagination_controls button {
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    transition: 0.4s;
+  }
+
+  .pagination_controls button:hover {
+    background-color: rgb(209, 183, 183);
+  }
+  .pagination_controls button:active {
+    background-color: #dddddd;
+  }
+
+  .pagination_details {
+    width: 15%;
+    height: 50px;
+    /* background-color: yellow; */
+    display: flex;
+    font-family: segoe ui;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 18px;
+  }
+  .pagelinks {
+    display: flex;
+    column-gap: 20px;
+
+  }
+
+  .pagelink {
+    font-family: segoe ui;
+    font-weight: bold;
+    transition: 0.4s;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .pagelink:hover {
+    background-color: #dedede;
+  }

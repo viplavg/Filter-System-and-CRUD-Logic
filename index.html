@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter System Vanilla JS</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- modal for add product -->
+    <div class="modal" id="add_modal" onclick="closeModal(event, 'add_modal')">
+
+        <div class="modal_data">
+
+            <i class="fa-solid fa-circle-xmark close" onclick="toggleModal(false, 'add_modal')"></i>
+
+            <h1>Add New Product</h1>
+
+            <div class="inputs">
+                <input type="text" id="name" placeholder="Name">
+                <input type="text" id="category" placeholder="Category">
+                <input type="number" id="price" placeholder="Price">
+                <input type="text" id="seller" placeholder="Seller">
+                <input type="text" id="company" placeholder="Company">
+                <input type="text" id="prod_image" placeholder="Image URL">
+            </div>
+            <button onclick="addProduct()" class="btn modal_btn">Add Product</button>
+        </div>
+
+    </div>
+
+    <!-- modal to view product -->
+    <div class="modal" id="view_modal" onclick="closeModal(event, 'view_modal')">
+    
+        <div class="modal_data view_modal">
+            <i class="fa-solid fa-circle-xmark close" onclick="toggleModal(false, 'view_modal')"></i>
+
+            <div class="product_content">
+                <div class="display_product_large">
+                    <img id="view_product_image" src="" alt="product_image">
+                </div>
+
+                <div class="content">
+                    <div class="head">
+                        <h1 id="head">Samsung A51</h1>
+                        <p>Sold by ~ <span id="view_seller"><em>Viplav Enterprises</em></span></p>
+                    </div>
+                    <div class="price">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                        <p id="view_price">25000</p>
+                    </div>
+
+                    <div class="spec">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique aut libero dolorum expedita repellendus debitis quas, suscipit numquam deserunt tempora illo, nesciunt, Similique aut libero dolorum expedita, pariatur aliquid laborum animi minima ipsa necessitatibus temporibus.</p>
+                    </div>
+
+                    <div class="shop_buttons">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+
+            </div>
+      </div>
+    
+    </div>
+
+    <!-- modal to delete product -->
+    <div class="modal" id="delete_modal" onclick="closeModal(event, 'delete_modal')">
+    
+        <div class="modal_data">
+            <i class="fa-solid fa-circle-xmark close" onclick="toggleModal(false, 'delete_modal')"></i>
+
+            <div class="warning">
+                <h1>Are you sure want to delete this product?</h1>
+            </div>
+
+            <div class="warning_buttons">
+                <button onclick="confirmation(true)" class="btn">Yes</button>
+                <button onclick="confirmation(false)" class="btn">No</button>
+            </div>
+            
+      </div>
+    
+    </div>
+
+    <!-- modal to edit product -->
+    <div class="modal" id="edit_modal" onclick="closeModal(event, 'edit_modal')">
+
+        <div class="modal_data">
+
+            <i class="fa-solid fa-circle-xmark close" onclick="toggleModal(false, 'edit_modal')"></i>
+
+            <h1>Edit Product</h1>
+
+            <div class="inputs">
+                <input type="text" id="name_edit" placeholder="Name">
+                <input type="text" id="category_edit" placeholder="Category">
+                <input type="number" id="price_edit" placeholder="Price">
+                <input type="text" id="seller_edit" placeholder="Seller">
+                <input type="text" id="company_edit" placeholder="Company">
+                <input type="text" id="prod_image_edit" placeholder="Image URL">
+            </div>
+            <button onclick="UpdateProduct()" class="btn modal_btn">Update Product</button>
+        </div>
+
+    </div>
+
+    
+
+    
+    <div class="filter">
+
+        <div class="name_filter">
+            <input class="inp" onkeyup="readInput(event, 'name')" type="text" placeholder="Enter a product name">
+            <button class="btn" onclick="filter()">Filter</button>
+        </div>
+
+        <div class="category_filter">
+            <select class="inp" onchange="readInput(event, 'category')">
+                <option value="">Select Category</option>
+                <option value="electronics">Electronics</option>
+                <option value="appliances">Appliances</option>
+                <option value="wearables">Wearables</option>
+                <option value="laptops">Laptops</option>
+            </select>
+        </div>
+
+        <div class="price_filter">
+            <select class="inp" onchange="readInput(event, 'priceRange')">
+                <option value="">Select Price Range</option>
+                <option value="0-1000">0 - 1000</option>
+                <option value="1000-10000">1000 - 10000</option>
+                <option value="10000-50000">10000 - 50000</option>
+                <option value="50000-100000">50000 - 100000</option>
+            </select>
+        </div>
+
+        <div class="seller_filter">
+            <select class="inp" onchange="readInput(event, 'seller')">
+                <option value="">Select Seller</option>
+                <option value="viplav enterprises">Viplav Enterprises</option>
+                <option value="daily tools appliances">Daily Tools Appliances</option>
+                <option value="tech goods enterprises">Tech Goods Enterprises</option>
+                <option value="modern enterprises">Modern Enterprises</option>
+            </select>
+        </div>
+
+        <div class="company_filter" onchange="readInput(event, 'company')">
+            <select class="inp">
+                <option value="">Select Company</option>
+                <option value="apple">Apple</option>
+                <option value="hawkins">Hawkins</option>
+                <option value="asus">ASUS</option>
+                <option value="samsung">Samsung</option>
+            </select>
+        </div>
+
+
+    </div>
+
+    <div class="data_display">
+        <button class="btn" onclick="toggleModal(true, 'add_modal')">Add New Product</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Seller</th>
+                    <th>Company</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="data"></tbody>
+        </table>
+
+        <div class="pagination">
+            <div class="pagination_controls">
+
+                <button onclick="prev()">
+                    <i class="fa-solid fa-angles-left"></i>
+                    Prev
+                </button>
+
+                <div class="pagelinks" id="pagelinks"></div>
+
+                <button onclick="next()">
+                    Next
+                    <i class="fa-solid fa-angles-right"></i>
+                </button>
+
+                
+            <input type="text" placeholder="Jump to Page No" class="inp"  onkeyup="openPage(Number(event.target.value))">
+
+            </div>
+            <div class="pagination_details">
+                <p>Page <span id="currentpage">1</span> of <span id="totalpages">0</span></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
